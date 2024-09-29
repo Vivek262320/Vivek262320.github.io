@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an E-commerce Website with Angular</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Your custom styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Building an E-commerce Website with Angular</h1> <a href="../index.html" class="btn btn-light">Back to
+            Portfolio</a>
+    </header>
+    <div class="container py-4">
+        <h2>Introduction</h2>
+        <p>In today’s digital age, e-commerce has become a vital part of business. In this blog, I will guide you
+            through the process of creating a fully functional e-commerce website using Angular, one of the most popular
+            frameworks for building dynamic web applications.</p>
+        <h2>Step 1: Setting Up the Angular Project</h2>
+        <p>First, install Angular CLI if you haven’t already. Then, create a new Angular project:</p>
+        <pre><code>ng new ecommerce-website</code></pre>
+        <p>This command will create a new Angular project named <strong>ecommerce-website</strong> with all the
+            necessary files and dependencies.</p>
+        <h2>Step 2: Creating Components</h2>
+        <p>Next, generate the necessary components for your application. The key components you’ll need include:</p>
+        <ul>
+            <li><strong>Product List</strong>: Displays all available products.</li>
+            <li><strong>Product Details</strong>: Shows detailed information about a selected product.</li>
+            <li><strong>Shopping Cart</strong>: Manages the items that users want to purchase.</li>
+        </ul>
+        <p>Run the following commands to create these components:</p>
+        <pre><code>ng generate component product-list</code></pre>
+        <pre><code>ng generate component product-details</code></pre>
+        <pre><code>ng generate component shopping-cart</code></pre>
+        <h2>Step 3: Setting Up Routing</h2>
+        <p>Angular’s routing allows users to navigate between different components. To set up routing, modify your
+            <strong>app-routing.module.ts</strong> file:</p>
+        <pre><code>import { NgModule } from '@angular/core'; import { RouterModule, Routes } from '@angular/router'; import { ProductListComponent } from './product-list/product-list.component'; import { ProductDetailsComponent } from './product-details/product-details.component'; import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'; const routes: Routes = [ { path: '', component: ProductListComponent }, { path: 'product/:id', component: ProductDetailsComponent }, { path: 'cart', component: ShoppingCartComponent }, ]; @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] }) export class AppRoutingModule { }</code></pre>
+        <p>This configuration allows you to navigate to the product details and shopping cart using routes.</p>
+        <h2>Step 4: Building the UI</h2>
+        <p>Utilize Bootstrap for styling your components. Implement a responsive design that provides an excellent user
+            experience. For example, you can use Bootstrap classes to create a grid layout for your product listings:
+        </p>
+        <pre><code>&lt;div class="row"&gt; &lt;div class="col-md-4"&gt; &lt;div class="card"&gt; &lt;img src="product-image.jpg" class="card-img-top" alt="Product"&gt; &lt;div class="card-body"&gt; &lt;h5 class="card-title"&gt;Product Name&lt;/h5&gt; &lt;p class="card-text"&gt;Product Description&lt;/p&gt; &lt;a href="/product/1" class="btn btn-primary"&gt;View Details&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</code></pre>
+        <h2>Step 5: Managing State with Services</h2>
+        <p>To manage the state of your application, such as the shopping cart items, create a service. This service will
+            handle adding, removing, and retrieving items:</p>
+        <pre><code>import { Injectable } from '@angular/core'; @Injectable({ providedIn: 'root', }) export class CartService { private items = []; addToCart(product) { this.items.push(product); } getItems() { return this.items; } clearCart() { this.items = []; return this.items; } }</code></pre>
+        <h2>Step 6: Testing the Application</h2>
+        <p>Once you have implemented the basic features, it’s crucial to test your application. Use Angular's built-in
+            testing utilities to create unit tests for your components and services.</p>
+        <h2>Conclusion</h2>
+        <p>By following these steps, you can create a powerful e-commerce platform using Angular. This project not only
+            showcases your development skills but also your understanding of modern web technologies. Continuous
+            enhancements can be made, such as integrating payment gateways, user authentication, and inventory
+            management.</p>
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 Vivek Gurav | <a href="mailto:vivekgurav0909@gmail.com"
+                class="text-warning">vivekgurav0909@gmail.com</a></p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
